@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FineController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashController;
@@ -26,3 +27,5 @@ Route::post('/register',[AuthController::class,'registerPost'])
 Route::post('/logout', [AuthController::class,'logout'])
     ->name('logout');
 
+Route::post('/pay-fine/{id}', [FineController::class, 'payFine'])
+    ->name('payFine');
