@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashController;
 
 Route::middleware("auth")->group(function(){
-    Route::view("/","welcome")
+    Route::get("/",[DashController::class,'dashboard'])
     ->name("dashboard");
 
 });
@@ -21,3 +22,7 @@ Route::get('/register',[AuthController::class,'register'])
 
 Route::post('/register',[AuthController::class,'registerPost'])
     ->name('register.Post');
+
+Route::post('/logout', [AuthController::class,'logout'])
+    ->name('logout');
+
