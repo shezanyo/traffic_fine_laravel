@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FineController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashController;
@@ -29,3 +30,6 @@ Route::post('/logout', [AuthController::class,'logout'])
 
 Route::post('/pay-fine/{id}', [FineController::class, 'payFine'])
     ->name('payFine');
+
+Route::get('/profile', [ProfileController::class, 'showProfile'])
+    ->name('profile')->middleware('auth');

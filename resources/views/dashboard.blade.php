@@ -81,8 +81,8 @@
 @section('content')
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="#">Dashboard</a>
-        <a href="#">Profile</a>
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+        <a href="{{ route('profile') }}">Profile</a> <!-- Updated Profile Link -->
 
         <!-- Logout Button (inside form) -->
         <form action="{{ route('logout') }}" method="POST" style="display:inline;">
