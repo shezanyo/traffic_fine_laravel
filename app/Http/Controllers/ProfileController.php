@@ -13,6 +13,6 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         // Pass the user data to the profile view
-        return view('profile.profile', compact('user'));
+        return view("profile.profile", compact("user"));
     }
 }
