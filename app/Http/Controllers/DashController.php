@@ -22,7 +22,7 @@ class DashController extends Controller
             $totalAmount = Fine::where('user_id', $userId)->sum('amount');
 
             // Pass the fines data to the dashboard view
-            return view('dashboard', compact('fines','totalAmount'));
+            return view('dashboard.dashboard', compact('fines','totalAmount'));
         } else {
             return redirect(route('login'))->with('error', 'Session expired. Please login again.');
         }
