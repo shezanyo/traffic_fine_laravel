@@ -13,6 +13,7 @@
             <h4 class="text-center" >Register your account</h4>
             <br>
             <form action="{{ route("register.Post") }}" method="post">
+                @csrf
                 <!-- email -->
                 <div class="form-floating mb-3 ">
                     <input type="email" class="form-control border-2" id="floatingInput" placeholder="name@example.com" name="email">
@@ -25,7 +26,7 @@
                 </div>
                 <!-- phone number -->
                 <div class="form-floating mb-3 ">
-                    <input type="text" class="form-control border-2" id="floatingInput" placeholder="+01xxxxxxxx" name="PhoneNumber">
+                    <input type="text" class="form-control border-2" id="floatingInput" placeholder="+01xxxxxxxx" name="phoneNumber">
                     <label for="floatingInput">Name*</label>
                 </div>
                 <!-- password -->

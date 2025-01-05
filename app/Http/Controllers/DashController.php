@@ -17,9 +17,7 @@ class DashController extends Controller
         // Check if user is authenticated
         if ($userId) {
             // Fetch all fines related to the logged-in user
-            $fines = Fine::where('user_id', $userId)->get();
-
-            $totalAmount = Fine::where('user_id', $userId)->sum('amount');
+            dd($userId);
 
             // Pass the fines data to the dashboard view
             return view('dashboard.dashboard', compact('fines','totalAmount'));

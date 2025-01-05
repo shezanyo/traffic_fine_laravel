@@ -18,15 +18,17 @@ return new class extends Migration
                 $table->string('location');
                 $table->text('description')->nullable();
                 $table->decimal('amount', 8, 2);
-                $table->unsignedBigInteger('user_id');
-                $table->unsignedBigInteger('policeid');
+                $table->unsignedBigInteger('driverid'); // Matches drivers.id
+                $table->unsignedBigInteger('policeid'); // Matches police.policeid
+                $table->unsignedBigInteger('vehicleid'); // Matches vehicle.id
                 $table->timestamps();
 
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                // Foreign key constraints
+                $table->foreign('driverid')->references('id')->on('drivers')->onDelete('cascade');
                 $table->foreign('policeid')->references('policeid')->on('police')->onDelete('cascade');
+                $table->foreign('vehicleid')->references('id')->on('vehicle')->onDelete('cascade');
             });
         }
-
     }
 
     /**
