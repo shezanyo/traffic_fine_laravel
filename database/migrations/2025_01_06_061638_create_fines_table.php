@@ -14,19 +14,21 @@ return new class extends Migration
         if (!Schema::hasTable('fines')) {
             Schema::create('fines', function (Blueprint $table) {
                 $table->id('fineid');
+                $table->string('name');
                 $table->date('date');
                 $table->string('location');
                 $table->text('description')->nullable();
                 $table->decimal('amount', 8, 2);
-                $table->unsignedBigInteger('driverid'); // Matches drivers.id
-                $table->unsignedBigInteger('policeid'); // Matches police.policeid
-                $table->unsignedBigInteger('vehicleid'); // Matches vehicle.id
+                $table->boolean('status')->default(0);
+                $table->unsignedBigInteger('driver_id'); // Matches drivers.id
+                $table->unsignedBigInteger('police_id'); // Matches police.policeid
+                $table->unsignedBigInteger('vehicle_id'); // Matches vehicle.id
                 $table->timestamps();
 
                 // Foreign key constraints
-                $table->foreign('driverid')->references('id')->on('drivers')->onDelete('cascade');
-                $table->foreign('policeid')->references('policeid')->on('police')->onDelete('cascade');
-                $table->foreign('vehicleid')->references('id')->on('vehicle')->onDelete('cascade');
+                $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
+                $table->foreign('police_id')->references('id')->on('police')->onDelete('cascade');
+                $table->foreign('vehicle_id')->references('id')->on('vehicle')->onDelete('cascade');
             });
         }
     }

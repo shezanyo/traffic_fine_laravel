@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('police', function (Blueprint $table) {
-            $table->id('policeid');  // Primary key
+            $table->id();  // Primary key
             $table->string('name');  // Police officer's name
             $table->string('batchnumber')->unique();  // Unique batch number
             $table->string('area_of_work');  // Area of work or jurisdiction

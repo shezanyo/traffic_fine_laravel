@@ -9,33 +9,38 @@ class Fine extends Model
 {
     use HasFactory;
 
-    // Define the table associated with the model
+    // Define the table name (optional if the model name matches the table name)
     protected $table = 'fines';
 
-    // Define the primary key
+    // Specify the primary key column (optional if the default 'id' is used)
     protected $primaryKey = 'fineid';
 
-    // Specify the fields that can be mass-assigned
+    // Allow mass assignment for these attributes
     protected $fillable = [
+        'name',
         'date',
         'location',
         'description',
         'amount',
-        'user_id',
+        'status',
+        'driverid',
         'policeid',
+        'vehicleid',
     ];
 
-    // If timestamps are disabled in your migration file, set this to false
-    public $timestamps = true;
-
-    // Add relationships if needed (optional)
-    public function user()
+    // Define relationships
+    public function driver()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Driver::class, 'driverid', 'id');
     }
 
     public function police()
     {
-        return $this->belongsTo(Police::class, 'policeid');
+        return $this->belongsTo(Police::class, 'policeid', 'id');
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'vehicleid', 'id');
     }
 }

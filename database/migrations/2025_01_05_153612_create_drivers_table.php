@@ -20,7 +20,7 @@ class CreateDriversTable extends Migration
             $table->string('license_number')->unique(); // Unique license number for the driver
             $table->date('license_issue_date');
             $table->date('license_expiry_date');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key to the users table
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade'); // Foreign key to the users table
             $table->timestamps(); // Timestamps for created_at and updated_at
         });
     }

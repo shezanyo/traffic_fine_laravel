@@ -27,7 +27,7 @@
                 <!-- phone number -->
                 <div class="form-floating mb-3 ">
                     <input type="text" class="form-control border-2" id="floatingInput" placeholder="+01xxxxxxxx" name="phoneNumber">
-                    <label for="floatingInput">Name*</label>
+                    <label for="floatingInput">Phone Number*</label>
                 </div>
                 <!-- password -->
                 <div class="form-floating mb-3">

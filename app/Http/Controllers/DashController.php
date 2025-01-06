@@ -3,24 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fine;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
 
 class DashController extends Controller
 {
     public function dashboard()
     {
-        // Get the logged-in user's ID
         $userId = Auth::id();
 
-        // Check if user is authenticated
         if ($userId) {
-            // Fetch all fines related to the logged-in user
-            dd($userId);
+            // Fetch the car IDs (vehicle IDs) for the authenticated user
+            $carIds = Vehicle::where('user_id', $userId)->pluck('id');
 
-            // Pass the fines data to the dashboard view
-            return view('dashboard.dashboard', compact('fines','totalAmount'));
+            // Fetch all fines associated with the retrieved car IDs
+            $fines = Fine::whereIn('vehicleid', $carIds)->get();
+
+            // Calculate the total amount of fines
+            $totalAmount = $fines->sum('amount');
+
+            return view('dashboard.dashboard', compact('fines', 'totalAmount'));
         } else {
             return redirect(route('login'))->with('error', 'Session expired. Please login again.');
         }
