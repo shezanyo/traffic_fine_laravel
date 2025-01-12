@@ -40,7 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'police' => [
+            'driver' => 'session',
+            'provider' => 'police',
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -65,10 +70,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'police' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Police::class,
+        ],
     ],
 
     /*

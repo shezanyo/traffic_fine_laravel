@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\FineController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PoliceAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashController;
@@ -34,5 +34,23 @@ Route::post("/logout", [AuthController::class,"logout"])
 Route::post("/pay-fine/{id}", [FineController::class, "payFine"])
     ->name("payFine");
 
-Route::get("/profile", [ProfileController::class, "showProfile"])
+Route::get("/profile", [PoliceAuthController::class, "showProfile"])
     ->name("profile")->middleware("auth");
+
+Route::get('/police/login', [PoliceAuthController::class, 'login'])->name('police.login');
+
+// Handle Police Login Request
+Route::post('/police/login', [PoliceAuthController::class, 'loginPost'])
+    ->name('police.login.submit');
+
+Route::get('/police/register',[PoliceAuthController::class, 'register'])
+    ->name('police.register');
+
+Route::post('/police/register',[PoliceAuthController::class, 'registerPost'])
+    ->name('police.registerPost');
+
+Route::middleware('auth:police')->group(function () {
+    Route::get('/police/dashboard', function () {
+        return view('police.dashboard.dashboard');
+    })->name('police.dashboard');
+});

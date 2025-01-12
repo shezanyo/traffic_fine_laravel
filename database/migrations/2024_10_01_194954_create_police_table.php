@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');  // Police officer's name
             $table->string('batchnumber')->unique();  // Unique batch number
             $table->string('area_of_work');  // Area of work or jurisdiction
+            $table->string('password');  // Password for authentication
             $table->timestamps();
         });
     }

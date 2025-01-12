@@ -3,25 +3,38 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Police extends Model
+class Police extends Authenticatable
 {
     use HasFactory;
 
-    // Define the table name (optional if the model name matches the table name)
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'police';
 
-    // Allow mass assignment for these attributes
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'batchnumber',
         'area_of_work',
+        'password',
     ];
 
-    // Relationships
-    public function fines()
-    {
-        return $this->hasMany(Fine::class, 'policeid', 'id');
-    }
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 }
