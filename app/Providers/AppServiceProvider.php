@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
+use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Controllers\AuthController;
 

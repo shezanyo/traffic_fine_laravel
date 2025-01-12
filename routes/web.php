@@ -12,6 +12,9 @@ Route::middleware("auth")->group(function(){
 
 });
 
+Route::get('/home', function () {
+    return view('home.home');
+})->name("home");
 
 Route::get("/login",[AuthController::class,"login"])
     ->name("login");

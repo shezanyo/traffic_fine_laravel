@@ -24,7 +24,7 @@ class DashController extends Controller
 
             return view('dashboard.dashboard', compact('fines', 'totalAmount'));
         } else {
-            return redirect(route('login'))->with('error', 'Session expired. Please login again.');
+            return view('home.home',['showNavbarInHeader' => false]);
         }
     }
 }

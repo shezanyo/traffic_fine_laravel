@@ -54,11 +54,11 @@ class AuthController extends Controller
 //                // Show success message and session email
 //                dd(session('email')); // Debugging: Should show the email
 //            }
-            return redirect(Route('login'))
+            return redirect(Route("login"))
             ->with("success","user created successfully");
         }
         else{
-            return redirect(Route('register'))
+            return redirect(Route("register"))
             ->with("error","register failed");
         }
 
