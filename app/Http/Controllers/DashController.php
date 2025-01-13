@@ -17,7 +17,7 @@ class DashController extends Controller
             $carIds = Vehicle::where('user_id', $userId)->pluck('id');
 
             // Fetch all fines associated with the retrieved car IDs
-            $fines = Fine::whereIn('vehicleid', $carIds)->get();
+            $fines = Fine::whereIn('vehicle_id', $carIds)->get();
 
             // Calculate the total amount of fines
             $totalAmount = $fines->sum('amount');

@@ -53,4 +53,5 @@ Route::middleware('auth:police')->group(function () {
     Route::get('/police/dashboard', function () {
         return view('police.dashboard.dashboard');
     })->name('police.dashboard');
+    Route::post('/fines', [FineController::class, 'store'])->name('fines.store');
 });
