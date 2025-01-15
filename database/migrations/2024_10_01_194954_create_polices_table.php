@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('police', function (Blueprint $table) {
+        Schema::create('polices', function (Blueprint $table) {
             $table->id();  // Primary key
             $table->string('name');  // Police officer's name
             $table->string('batchnumber')->unique();  // Unique batch number
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('police');
+        Schema::dropIfExists('polices');
     }
 };

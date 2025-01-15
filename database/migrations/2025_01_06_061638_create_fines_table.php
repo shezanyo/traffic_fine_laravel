@@ -27,8 +27,8 @@ return new class extends Migration
 
                 // Foreign key constraints
                 $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
-                $table->foreign('police_id')->references('id')->on('police')->onDelete('cascade');
-                $table->foreign('vehicle_id')->references('id')->on('vehicle')->onDelete('cascade');
+                $table->foreign('police_id')->references('id')->on('polices')->onDelete('cascade');
+                $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
             });
         }
     }
