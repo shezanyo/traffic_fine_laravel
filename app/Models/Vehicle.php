@@ -10,7 +10,7 @@ class Vehicle extends Model
     use HasFactory;
 
     // Define the table name (optional if the model name matches the table name)
-    protected $table = 'vehicle';
+    protected $table = 'vehicles';
 
     // Allow mass assignment for these attributes
     protected $fillable = [

@@ -14,7 +14,7 @@ class Police extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'police';
+    protected $table = 'polices';
 
     /**
      * The attributes that are mass assignable.

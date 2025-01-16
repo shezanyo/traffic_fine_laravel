@@ -48,12 +48,11 @@ class PoliceAuthController extends Controller
                 'required',
                 'string',
                 'max:255',
-                'unique:police,batchnumber', // Ensure unique batch numbers
+                'unique:polices,batchnumber', // Ensure unique batch numbers
             ],
             'area_of_work' => 'required|string|max:255',
             'password' => 'required|string', // Requires password confirmation
         ]);
-
         // Create the police record
         $police = Police::create([
             'name' => $validatedData['name'],

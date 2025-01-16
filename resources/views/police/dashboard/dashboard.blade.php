@@ -6,71 +6,77 @@
     <title>Add Fine</title>
 </head>
 <body>
-<h1>Add Fine</h1>
+<div class="container">
+    <h2>Create a Fine</h2>
+    <form action="{{ route('fines.store') }}" method="POST">
+        @csrf
 
-<!-- Display Validation Errors -->
-@if ($errors->any())
-    <div style="color: red;">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-<!-- Fine Input Form -->
-<form action="{{ route('fines.store') }}" method="POST">
-    @csrf
-    <div>
-        <label for="name">Fine Name:</label>
-        <input type="text" id="name" name="name" required>
-    </div>
+        <!-- Date -->
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" class="form-control" value="{{ old('date') }}" required>
+            @error('date')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-    <div>
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
-    </div>
+        <!-- Location -->
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" class="form-control" value="{{ old('location') }}" required>
+            @error('location')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-    <div>
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required>
-    </div>
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description">Description (optional)</label>
+            <textarea id="description" name="description" class="form-control">{{ old('description') }}</textarea>
+            @error('description')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-    <div>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
-    </div>
+        <!-- Amount -->
+        <div class="form-group">
+            <label for="amount">Fine Amount</label>
+            <input type="number" id="amount" name="amount" class="form-control" value="{{ old('amount') }}" min="0" required>
+            @error('amount')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-    <div>
-        <label for="amount">Amount (in USD):</label>
-        <input type="number" id="amount" name="amount" step="0.01" required>
-    </div>
+        <!-- Registration Number -->
+        <div class="form-group">
+            <label for="registration_number">Vehicle Registration Number</label>
+            <input type="text" id="registration_number" name="registration_number" class="form-control" value="{{ old('registration_number') }}" required>
+            @error('registration_number')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-    <div>
-        <label for="status">Status:</label>
-        <select id="status" name="status" required>
-            <option value="0">Unpaid</option>
-            <option value="1">Paid</option>
-        </select>
-    </div>
+        <!-- License Number -->
+        <div class="form-group">
+            <label for="license_number">Driver License Number</label>
+            <input type="text" id="license_number" name="license_number" class="form-control" value="{{ old('license_number') }}" required>
+            @error('license_number')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-    <div>
-        <label for="driver_id">Driver ID:</label>
-        <input type="number" id="driver_id" name="driver_id" required>
-    </div>
-
-    <div>
-        <label for="police_id">Police ID:</label>
-        <input type="number" id="police_id" name="police_id" required>
-    </div>
-
-    <div>
-        <label for="vehicle_id">Vehicle ID:</label>
-        <input type="number" id="vehicle_id" name="vehicle_id" required>
-    </div>
-
-    <button type="submit">Add Fine</button>
-</form>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Add Fine</button>
+    </form>
+</div>
 </body>
 </html>
