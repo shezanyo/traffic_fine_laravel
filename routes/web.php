@@ -1,57 +1,45 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashController;
 use App\Http\Controllers\FineController;
 use App\Http\Controllers\PoliceAuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashController;
 
-Route::middleware("auth")->group(function(){
-    Route::get("/",[DashController::class,"dashboard"])
-    ->name("dashboard");
-
-});
-
+// Public Routes
 Route::get('/home', function () {
     return view('home.home', ['showNavbarInHeader' => false]);
-})->name("home");
+})->name('home');
 
-Route::get("/login",[AuthController::class,"login"])
-    ->name("login");
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login.Post');
 
-Route::post("/login",[AuthController::class,"loginPost"])
-    ->name("login.Post");
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register.Post');
 
-Route::get("/register",[AuthController::class,"register"])
-    ->name("register");
+// Authenticated User Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/', [DashController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [PoliceAuthController::class, 'showProfile'])->name('profile');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/pay-fine/{id}', [FineController::class, 'payFine'])->name('payFine');
+});
 
-Route::post("/register",[AuthController::class,"registerPost"])
-    ->name("register.Post");
+// Police Routes (Authentication and Dashboard)
+Route::prefix('police')->group(function () {
+    // Public Police Routes
+    Route::get('/login', [PoliceAuthController::class, 'login'])->name('police.login');
+    Route::post('/login', [PoliceAuthController::class, 'loginPost'])->name('police.login.submit');
 
-Route::post("/logout", [AuthController::class,"logout"])
-    ->name("logout");
+    Route::get('/register', [PoliceAuthController::class, 'register'])->name('police.register');
+    Route::post('/register', [PoliceAuthController::class, 'registerPost'])->name('police.registerPost');
 
-Route::post("/pay-fine/{id}", [FineController::class, "payFine"])
-    ->name("payFine");
+    // Authenticated Police Routes
+    Route::middleware('auth:police')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('police.dashboard.dashboard');
+        })->name('police.dashboard');
 
-Route::get("/profile", [PoliceAuthController::class, "showProfile"])
-    ->name("profile")->middleware("auth");
-
-Route::get('/police/login', [PoliceAuthController::class, 'login'])->name('police.login');
-
-// Handle Police Login Request
-Route::post('/police/login', [PoliceAuthController::class, 'loginPost'])
-    ->name('police.login.submit');
-
-Route::get('/police/register',[PoliceAuthController::class, 'register'])
-    ->name('police.register');
-
-Route::post('/police/register',[PoliceAuthController::class, 'registerPost'])
-    ->name('police.registerPost');
-
-Route::middleware('auth:police')->group(function () {
-    Route::get('/police/dashboard', function () {
-        return view('police.dashboard.dashboard');
-    })->name('police.dashboard');
-    Route::post('/fines', [FineController::class, 'store'])->name('fines.store');
+        Route::post('/fines', [FineController::class, 'store'])->name('fines.store');
+    });
 });
