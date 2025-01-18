@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\FineController;
 use App\Http\Controllers\PoliceAuthController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -23,6 +24,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [PoliceAuthController::class, 'showProfile'])->name('profile');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/pay-fine/{id}', [FineController::class, 'payFine'])->name('payFine');
+
+    Route::get('/vehicle',[VehicleController::class,'vehicleGet'])->name('vehicle.Get');
+    Route::get('/vehicle/add',[VehicleController::class,'vehicleAddGet'])->name('vehicleAdd.Get');
+    Route::post('/vehicles', [VehicleController::class, 'vehicleCreate'])->name('vehicle.Post');
+
 });
 
 // Police Routes (Authentication and Dashboard)

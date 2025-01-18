@@ -45,7 +45,7 @@
                             <!-- Dropdown menu -->
                             <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUserMenu">
                                 <li><a class="dropdown-item" href="{{ Route('profile') }}">View Profile</a></li>
-                                <li><a class="dropdown-item" href="">Settings</a></li>
+                                <li><a class="dropdown-item" href="{{Route('vehicle.Get')}}">Vehicles</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{{ Route('logout') }}">Logout</a></li>
                             </ul>
