@@ -13,7 +13,7 @@ Route::middleware("auth")->group(function(){
 });
 
 Route::get('/home', function () {
-    return view('home.home');
+    return view('home.home', ['showNavbarInHeader' => false]);
 })->name("home");
 
 Route::get("/login",[AuthController::class,"login"])

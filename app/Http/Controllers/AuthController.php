@@ -5,64 +5,87 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        return view('auth.login',['showNavbarInHeader' => false]);
     }
 
-    function loginPost(Request $request)
+    public function loginPost(Request $request)
     {
         $request->validate([
-            "email"=>"required",
-            "password"=>"required"
+            "email" => "required|email",
+            "password" => "required|min:6",
         ]);
 
-        $credentials=$request->only("email","password");
-        if(Auth::attempt($credentials)){
-            return redirect()->intended(route("dashboard"));
+        $credentials = $request->only("email", "password");
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended(route("dashboard"))
+                ->with("success", "Welcome back!");
         }
+
         return redirect(route("login"))
-            ->with("error","login Failed");
+            ->withInput($request->only("email")) // Retain email input
+            ->with("error", "Invalid email or password. Please try again.");
     }
+
 
     public function register()
     {
-        return view('auth.register');
+        return view('auth.register',['showNavbarInHeader' => false]);
     }
 
-    function registerPost(Request $request)
+
+
+    public function registerPost(Request $request)
     {
+        // Validate incoming request
         $request->validate([
-            "name"=>"required",
-            "email"=>"required",
-            "phoneNumber"=>"required",
-            "password"=>"required"
+            "name" => "required|string|max:255",
+            "email" => [
+                "required",
+                "email",
+                "regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/", // Only Gmail addresses
+                "unique:users,email",
+            ],
+            "phoneNumber" => [
+                "required",
+                "regex:/^(\+8801|01)[3-9]\d{8}$/", // Valid BD numbers: +880 or 01 prefix
+                "unique:users,phoneNumber",
+            ],
+            "password" => "required|min:8|confirmed", // Password confirmation
+        ], [
+            // Custom error messages
+            'email.regex' => 'Only Gmail addresses are allowed.',
+            'phoneNumber.regex' => 'Enter a valid Bangladeshi phone number.',
+            'email.unique' => 'This email is already registered.',
+            'phoneNumber.unique' => 'This phone number is already registered.',
+            'password.confirmed' => 'The password confirmation does not match.',
+            'password.min' => 'The password must be at least 8 characters.',
         ]);
 
-        $user= new User();
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->phoneNumber=$request->phoneNumber;
-        $user->password=Hash::make($request->password);
+        // Create a new user instance
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phoneNumber = $request->phoneNumber;
+        $user->password = Hash::make($request->password);
 
-        if($user->save()){
-//            //$request->session()->put('email', Auth::user()->email);
-//            if ($request->session()->has('email')) {
-//                // Show success message and session email
-//                dd(session('email')); // Debugging: Should show the email
-//            }
-            return redirect(Route("login"))
-            ->with("success","user created successfully");
+        // Save the user and handle response
+        if ($user->save()) {
+            return redirect()->route("login")
+                ->with("success", "User created successfully. Please log in.");
+        } else {
+            return redirect()->route("register")
+                ->with("error", "Registration failed. Please try again.");
         }
-        else{
-            return redirect(Route("register"))
-            ->with("error","register failed");
-        }
-
     }
+
     public function logout()
     {
 

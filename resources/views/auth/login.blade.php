@@ -10,42 +10,60 @@
     <br><br>
     <section class="container mx-auto mt-5 wow pulse" style="margin-bottom: 100px;">
         <div class="divWhite formWidth p-4" style="border-radius: 20px;">
-            <h4 class="text-center" >Login your account</h4>
+            <h4 class="text-center">Login to Your Account</h4>
             <br>
-            <!-- login form -->
-            <form action="{{ route("login.Post") }}" method="post">
+            <!-- Login form -->
+            <form action="{{ route('login.Post') }}" method="post">
                 @csrf
-                <!-- email -->
-                <div class="form-floating mb-3 ">
-                    <input type="email" class="form-control border-2" id="floatingInput" placeholder="name@example.com" name="email">
-                    <label for="floatingInput">Email Address*</label>
-                </div>
-                <!-- password -->
+                <!-- Email -->
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control border-2" id="floatingPassword" placeholder="Password" name="password">
-                    <label for="floatingPassword">Password*</label>
+                    <input
+                        type="email"
+                        class="form-control border-2"
+                        id="emailInput"
+                        placeholder="name@example.com"
+                        name="email"
+                        value="{{ old('email') }}"
+                        aria-label="Email Address"
+                    >
+                    <label for="emailInput">Email Address*</label>
+                    @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
-                <!-- Error messages -->
-                @if ($errors->any())
+                <!-- Password -->
+                <div class="form-floating mb-3">
+                    <input
+                        type="password"
+                        class="form-control border-2"
+                        id="passwordInput"
+                        placeholder="Password"
+                        name="password"
+                        aria-label="Password"
+                    >
+                    <label for="passwordInput">Password*</label>
+                    @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <!-- General Error Message -->
+                @if (session('error'))
                     <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                        {{ session('error') }}
                     </div>
                 @endif
-                <!-- Submit button -->
+                <!-- Submit Button -->
                 <div class="d-grid gap-1">
                     <button class="btn btn-primary" type="submit">
-                        <span> <i class="fa-solid fa-right-to-bracket"></i> Login </span>
+                        <span><i class="fa-solid fa-right-to-bracket"></i> Login</span>
                     </button>
                     <br>
-                    <p>New to here <a href="{{ route("register") }}" style="text-decoration: none;" > Register here</a> </p>
+                    <p>New here? <a href="{{ route('register') }}" style="text-decoration: none;">Register here</a></p>
                 </div>
             </form>
-            <!-- login form end -->
+            <!-- Login form end -->
         </div>
     </section>
+
     <!-- login form section end -->
 @endsection

@@ -10,37 +10,84 @@
     <br><br>
     <section class="container mx-auto mt-5 wow pulse">
         <div class="divWhite formWidth p-4" style="border-radius: 20px;">
-            <h4 class="text-center" >Register your account</h4>
+            <h4 class="text-center">Register your account</h4>
             <br>
-            <form action="{{ route("register.Post") }}" method="post">
+            <form action="{{ route('register.Post') }}" method="post">
                 @csrf
-                <!-- email -->
-                <div class="form-floating mb-3 ">
-                    <input type="email" class="form-control border-2" id="floatingInput" placeholder="name@example.com" name="email">
-                    <label for="floatingInput">Email Address*</label>
-                </div>
-                <!-- name -->
-                <div class="form-floating mb-3 ">
-                    <input type="text" class="form-control border-2" id="floatingInput" placeholder="name@example.com" name="name">
-                    <label for="floatingInput">Name*</label>
-                </div>
-                <!-- phone number -->
-                <div class="form-floating mb-3 ">
-                    <input type="text" class="form-control border-2" id="floatingInput" placeholder="+01xxxxxxxx" name="phoneNumber">
-                    <label for="floatingInput">Phone Number*</label>
-                </div>
-                <!-- password -->
+                <!-- Email -->
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control border-2" id="floatingPassword" placeholder="Password" name="password">
-                    <label for="floatingPassword">Password*</label>
+                    <input
+                        type="email"
+                        class="form-control border-2"
+                        id="emailInput"
+                        placeholder="name@gmail.com"
+                        name="email"
+                        value="{{ old('email') }}"
+                    >
+                    <label for="emailInput">Email Address (Gmail only)*</label>
+                    @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
-{{--                <!-- confirm password -->--}}
-{{--                <div class="form-floating mb-4">--}}
-{{--                    <input type="password" class="form-control border-2" id="floatingPassword" placeholder="Password">--}}
-{{--                    <label for="floatingPassword">Confirm Password*</label>--}}
-{{--                </div>--}}
-
-                <!-- Error messages -->
+                <!-- Name -->
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        class="form-control border-2"
+                        id="nameInput"
+                        placeholder="Your Name"
+                        name="name"
+                        value="{{ old('name') }}"
+                    >
+                    <label for="nameInput">Name*</label>
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <!-- Phone Number -->
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        class="form-control border-2"
+                        id="phoneInput"
+                        placeholder="+8801xxxxxxxx"
+                        name="phoneNumber"
+                        value="{{ old('phoneNumber') }}"
+                    >
+                    <label for="phoneInput">Phone Number (Bangladesh)*</label>
+                    @error('phoneNumber')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <!-- Password -->
+                <div class="form-floating mb-3">
+                    <input
+                        type="password"
+                        class="form-control border-2"
+                        id="passwordInput"
+                        placeholder="Password"
+                        name="password"
+                    >
+                    <label for="passwordInput">Password*</label>
+                    @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <!-- Confirm Password -->
+                <div class="form-floating mb-3">
+                    <input
+                        type="password"
+                        class="form-control border-2"
+                        id="confirmPasswordInput"
+                        placeholder="Confirm Password"
+                        name="password_confirmation"
+                    >
+                    <label for="confirmPasswordInput">Confirm Password*</label>
+                    @error('password_confirmation')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <!-- Error Messages -->
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -50,17 +97,18 @@
                         </ul>
                     </div>
                 @endif
-                <!-- Submit button -->
-
+                <!-- Submit Button -->
                 <div class="d-grid gap-1">
                     <button class="btn btn-primary" type="submit">
-                        <span> <i class="fa-solid fa-right-to-bracket"></i> Register </span>
+                        <span><i class="fa-solid fa-right-to-bracket"></i> Register</span>
                     </button>
                     <br>
-                    <p>Already have an account? <a href="{{route("login")}}" style="text-decoration: none;" >Login here</a> </p>
+                    <p>Already have an account?
+                        <a href="{{ route('login') }}" style="text-decoration: none;">Login here</a>
+                    </p>
                 </div>
-
             </form>
         </div>
     </section>
+
 @endsection
