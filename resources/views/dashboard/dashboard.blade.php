@@ -21,17 +21,18 @@
             <section class="fine-history">
                 <h2>Fine History</h2>
                 @forelse ($fines as $fine)
-                    <div class="history-item">
+                    <a href="{{ route('fine.Payment',['fine_id' => $fine->fineid]) }}" class="history-item">
                         <h3>{{ $fine->name }}</h3>
                         <p>{{ $fine->location }}</p>
                         <p>{{ $fine->description }}</p>
                         <span>{{ \Carbon\Carbon::parse($fine->date)->format('d/m/y') }}</span>
                         <span class="amount">TK {{ $fine->amount }}</span>
-                    </div>
+                    </a>
                 @empty
                     <p>No fines available.</p>
                 @endforelse
             </section>
+
 
             <!-- Traffic Alerts Section -->
             <aside class="traffic-alerts">

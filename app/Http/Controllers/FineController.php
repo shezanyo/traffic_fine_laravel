@@ -46,13 +46,26 @@ class FineController extends Controller
         return redirect()->route('police.dashboard')->with('success', 'Fine added successfully!');
     }
 
-    public function payFine($id)
+    public function finePayment($fine_id)
     {
-        // Find the fine by ID and delete it
-        $fine = Fine::findOrFail($id);
-        $fine->delete();
+        $fine = Fine::where('fineid', $fine_id)->first();
+        return view('dashboard.finePayment',compact('fine'));
+    }
+    public function payFine($fine_id)
+    {
+        // Find the fine by its ID
+        $fine = Fine::where('fineid', $fine_id)->first();
 
-        // Redirect back to the dashboard with a success message
-        return redirect()->route('police.dashboard')->with('success', 'Fine paid successfully.');
+        if ($fine) {
+            // Update the fine status to '1' (paid)
+            $fine->status = 1;
+            $fine->save();
+
+            // Redirect with a success message
+            return redirect()->route('fine.Payment',['fine_id' => $fine->fineid])->with('success', 'Fine marked as paid successfully!');
+        } else {
+            // Redirect with an error message if the fine is not found
+            return redirect()->route('fine.Payment',['fine_id' => $fine->fineid])->with('error', 'Fine not found.');
+        }
     }
 }

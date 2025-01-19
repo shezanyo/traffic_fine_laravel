@@ -29,6 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/vehicle/add',[VehicleController::class,'vehicleAddGet'])->name('vehicleAdd.Get');
     Route::post('/vehicles', [VehicleController::class, 'vehicleCreate'])->name('vehicle.Post');
 
+    Route::get('/fine-payment/{fine_id}', [FineController::class, 'finePayment'])->name('fine.Payment');
+    Route::post('/pay-fine/{fine_id}', [FineController::class, 'payFine'])->name('pay.Fine');
+
+
+
 });
 
 // Police Routes (Authentication and Dashboard)
