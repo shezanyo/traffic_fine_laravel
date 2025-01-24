@@ -5,39 +5,86 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
 @endsection
 @section('content')
-    <!--section 1: Carousel start -->
-    <section class="lighter-gradient-background">
-        <div class="">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner container mx-auto">
-                    <!-- 1st slide -->
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <!-- 1st column -->
-                            <div class="col-12 col-lg-6 col-md-12 marginBottomSpace wow slideInLeft"  >
-                                <h3>Fine Ease  <span class="textRed">Drive Safe</span> </h3>
-                                <br>
-                                <h1>Pay Smart, Manage Traffic Fines with Ease </h1>
+    <!-- banner -->
+    <section class="container mx-auto mt-5">
+        <div class="row">
+            <div class="col-12 col-lg-6 col-md-12">
+                <div class="mt-5">
+                    <h2>Fine Ease</h2>
+                    <h2>Drive Safe, Pay Smart,</h2>
+                    <h2>Manage Traffic Fines with Ease</h2>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-md-12">
+                <img src="{{asset('images/banner.png')}}" style="width: 80%" alt="" />
+            </div>
+        </div>
+    </section>
+    <!-- banner end -->
 
-                            </div>
-                            <!-- 2nd column -->
-                            <div class="col-12 col-lg-6 col-md-12 wow slideInRight" >
-                                <img src="images/slidesCar/car1.jpg" class="d-block w-100" alt="Slide 1">
+    <section class="bg-light mt-4 mb-4">
+        <div class="container mx-auto mt-5">
+            <!-- Traffic Violation Awareness Section -->
+            <section class="text-center py-5">
+                <h2 class="mb-4">Know the Rules, Avoid the Fines</h2>
+                <p class="mb-4">
+                    Stay informed about traffic laws and drive responsibly.
+                </p>
+                <div class="row g-4">
+                    <!-- Speeding -->
+                    <div class="col-md-4 h-100">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <img
+                                    src="{{asset('images/speed.png')}}"
+                                    alt="Speeding"
+                                    class="mb-3"
+                                    style="width: 100px"
+                                />
+                                <h5 class="card-title">Speeding</h5>
+                                <p class="card-text">
+                                    Learn about speed limits and avoid hefty penalties.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <!-- previous button -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" >
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <!-- next button -->
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" >
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <!-- Drunk Driving -->
+                    <div class="col-md-4 h-100">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <img
+                                    src="{{asset('images/drunk.png')}}"
+                                    alt="Drunk Driving"
+                                    class="mb-3"
+                                    style="width: 100px"
+                                />
+                                <h5 class="card-title">Drunk Driving</h5>
+                                <p class="card-text">
+                                    Understand the consequences of driving.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Running Red Lights -->
+                    <div class="col-md-4 h-100">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <img
+                                    src="{{asset('images/light.png')}}"
+                                    alt="Running Red Lights"
+                                    class="mb-3"
+                                    style="width: 100px"
+                                />
+                                <h5 class="card-title">Running Red Lights</h5>
+                                <p class="card-text">
+                                    Know the importance of obeying traffic signals.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+        </div>
     </section>
     <!-- Carousel end -->
 @endsection
