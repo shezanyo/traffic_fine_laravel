@@ -1,114 +1,37 @@
-@extends("layouts.default")
+@extends('layouts.default')
 
-@section("title", "Profile")
+@section("head")
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/registerLogin.css') }}" />
+@endsection
 
-@push("styles")
-    <style>
-        /* General Body Styling */
-        body {
-            background-color: #f9f9f9;
-            font-family: "Arial", sans-serif;
-        }
+@section('content')
+    <!-- User profile section -->
+    <br><br>
+    <section class="container mx-auto mt-5 wow pulse">
+        <div class="divWhite formWidth p-4" style="border-radius: 20px;">
+            <h4 class="text-center" >User Profile</h4>
+            <br>
+            <!-- Profile details -->
+            <form class="row g-3">
+                <!-- Name -->
+                <div class="col-12">
+                    <label for="inputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="inputName" value="{{ $user->name }}" readonly>
+                </div>
 
-        /* Container Styling */
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+                <!-- Email -->
+                <div class="col-12">
+                    <label for="inputEmail" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="inputEmail" value="{{ $user->email }}" readonly>
+                </div>
 
-        /* Header Styling */
-        h2 {
-            text-align: center;
-            color: #0044cc;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        /* Table Styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-            color: #333;
-            font-weight: 600;
-        }
-
-        td {
-            color: #555;
-        }
-
-        /* Button Styling */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px 5px;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: #0044cc;
-        }
-
-        .btn-primary:hover {
-            background-color: #003399;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-        }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-    </style>
-@endpush
-
-@section("content")
-    <div class="container">
-        <h2>User Profile</h2>
-
-        <table>
-            <tr>
-                <th>Name:</th>
-                <td>{{ $user->name }}</td>
-            </tr>
-            <tr>
-                <th>Email:</th>
-                <td>{{ $user->email }}</td>
-            </tr>
-            <tr>
-                <th>Phone:</th>
-                <td>{{ $user->phoneNumber }}</td> <!-- Assuming you have a phone column in the users table -->
-            </tr>
-            <tr>
-                <th>Joined:</th>
-                <td>{{ $user->created_at->format("d M Y") }}</td>
-            </tr>
-        </table>
-
-        <!-- Optionally, you can add buttons like "Edit Profile" or "Change Password" -->
-        <div style="text-align: center;">
-            <a href="" class="btn btn-primary">Edit Profile</a>
-            <a href="" class="btn btn-secondary">Change Password</a>
+                <!-- Phone -->
+                <div class="col-12">
+                    <label for="inputPhone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="inputPhone" value="{{ $user->phoneNumber ?? 'Not Provided' }}" readonly>
+                </div>
+            </form>
         </div>
-    </div>
+    </section>
 @endsection

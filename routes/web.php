@@ -21,9 +21,8 @@ Route::post('/register', [AuthController::class, 'registerPost'])->name('registe
 // Authenticated User Routes
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashController::class, 'dashboard'])->name('dashboard');
-    Route::get('/profile', [PoliceAuthController::class, 'showProfile'])->name('profile');
+    Route::get('/profile', [AuthController::class, 'showProfile'])->name('profile');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::post('/pay-fine/{id}', [FineController::class, 'payFine'])->name('payFine');
 
     Route::get('/vehicle',[VehicleController::class,'vehicleGet'])->name('vehicle.Get');
     Route::get('/vehicle/add',[VehicleController::class,'vehicleAddGet'])->name('vehicleAdd.Get');
@@ -32,6 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/fine-payment/{fine_id}', [FineController::class, 'finePayment'])->name('fine.Payment');
     Route::post('/pay-fine/{fine_id}', [FineController::class, 'payFine'])->name('pay.Fine');
 
+    Route::get('/fine', [FineController::class, 'currentfine'])->name('fine.Current');
+
+    Route::get('/fineHistory', [FineController::class, 'fineHistory'])->name('fine.History');
 
 
 });

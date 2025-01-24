@@ -23,9 +23,9 @@
                         <!-- Centered menu items -->
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active nav-link-ltr" href="{{ Route('dashboard') }}">Home</a>
-                            <a class="nav-link active nav-link-ltr" href="{{ Route('login') }}">Shop</a>
-                            <a class="nav-link active nav-link-ltr" href="{{ Route('register') }}">Add Car</a>
-                            <a class="nav-link active nav-link-ltr" href="{{ Route('dashboard') }}">Feat</a>
+                            <a class="nav-link active nav-link-ltr" href="{{ Route('fine.Current') }}">Fine</a>
+                            <a class="nav-link active nav-link-ltr" href="{{ Route('fine.History') }}">History</a>
+                            <a class="nav-link active nav-link-ltr" href="">Feat</a>
                         </div>
                         <!-- User Profile -->
                         <div class="dropdown">

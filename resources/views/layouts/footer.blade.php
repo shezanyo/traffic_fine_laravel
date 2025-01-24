@@ -8,17 +8,15 @@
                     FINEEASE
                 </h2>
                 <p>
-                    We are many variations of passages available but the majority
-                    have suffered alteration in some form by injected humour words
-                    believable.
+                    Your one call to traffic fine solution
                 </p>
             </div>
             <!-- 2 -->
             <div class="col-12 col-md-6 col-lg-3" style="margin-bottom: 20px;" >
                 <h3 style="margin-bottom: 20px;"> Contact Us </h3>
-                <h5> Phone: +2 123 654 7898 </h5>
+                <h5> Phone: 01882943878 </h5>
                 <h5> Address: 102/5, Motijheel.</h5>
-                <h5>Email: info@example.com</h5>
+                <h5>Email: shahriershezan@gmail.com</h5>
             </div>
             <!-- 3 -->
             <div class="col-12 col-md-6 col-lg-3" style="margin-bottom: 20px;" >

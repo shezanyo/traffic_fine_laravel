@@ -96,4 +96,12 @@ class AuthController extends Controller
 
         return redirect(route('login'));
     }
+    public function showProfile()
+    {
+        // Get the currently authenticated user
+        $user = Auth::user();
+
+        // Pass user data to the profile view
+        return view('profile.profile', compact('user'));
+    }
 }

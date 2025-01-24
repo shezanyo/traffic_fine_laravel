@@ -68,4 +68,13 @@ class FineController extends Controller
             return redirect()->route('fine.Payment',['fine_id' => $fine->fineid])->with('error', 'Fine not found.');
         }
     }
+
+    public function currentfine()
+    {
+        return view('dashboard.fine');
+    }
+
+    public function finehistory(){
+        return view('dashboard.fineHistory');
+    }
 }
