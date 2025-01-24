@@ -78,9 +78,12 @@
 }
 
 .poster-background {
-  background: black;
-  color: white;
+  background: #D9D9D9;
+  color: #353434;
   padding: 30px;
+}
+.header{
+    background: #D9D9D9;
 }
 
 /* card effect */
@@ -95,5 +98,24 @@
 /* footer */
 .footerLinks {
   text-decoration: none;
-  color: white;
+  color: #797672;
 }
+body{
+    background: #DBE3E3;
+}
+.btn {
+    background: #97AFAF; /* Default background */
+    color: white; /* Default text color */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
+}
+
+.btn:hover {
+    background-color: #0F5132DD; /* Darker shade for hover */
+    color: white;
+}
+
+

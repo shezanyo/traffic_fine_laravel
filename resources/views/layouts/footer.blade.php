@@ -4,7 +4,9 @@
         <div class="row">
             <!-- 1 -->
             <div class="col-12 col-md-6 col-lg-3" style="margin-bottom: 20px;" >
-
+                <h2>
+                    FINEEASE
+                </h2>
                 <p>
                     We are many variations of passages available but the majority
                     have suffered alteration in some form by injected humour words
@@ -38,7 +40,7 @@
                 <div class="mb-3">
                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email">
                 </div>
-                <button type="button" class="btn btn-danger w-100">Subscribe</button>
+                <button type="button" class="btn   w-100 r">Subscribe</button>
             </div>
         </div>
     </footer>

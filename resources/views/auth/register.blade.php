@@ -99,12 +99,12 @@
                 @endif
                 <!-- Submit Button -->
                 <div class="d-grid gap-1">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn" type="submit">
                         <span><i class="fa-solid fa-right-to-bracket"></i> Register</span>
                     </button>
                     <br>
                     <p>Already have an account?
-                        <a href="{{ route('login') }}" style="text-decoration: none;">Login here</a>
+                        <a href="{{ route('login') }}" style="text-decoration: none;color:#97AFAF;">Login here</a>
                     </p>
                 </div>
             </form>

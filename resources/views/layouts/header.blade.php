@@ -1,4 +1,4 @@
-<section>
+<section class="header">
     <div class="container mx-auto">
         @if(!isset($showNavbarInHeader) || $showNavbarInHeader)
             <nav class="navbar navbar-expand-lg">
