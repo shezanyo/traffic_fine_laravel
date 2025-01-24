@@ -1,134 +1,125 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
-
-main {
-    display: flex;
-}
-
-.fine-counter {
-    width: 200px;
-    background-color: #fff;
-    border-radius: 10px;
+/* Container for the entire dashboard */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #eef2f3;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Top section with fine counter and license button */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* Fine Counter */
+.fine-counter {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 15px;
     text-align: center;
-    margin-right: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 5px;
 }
 
 .fine-counter p {
-    font-size: 18px;
-    color: #888;
+    font-size: 1rem;
+    color: #6c757d;
 }
 
 .fine-counter h1 {
-    font-size: 36px;
-    color: #333;
+    font-size: 2.5rem;
+    color: #4a7d8a;
+    margin-top: 10px;
 }
 
+/* Add Driving License Button */
 .content {
-    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .license-btn {
-    background-color: #ffa500;
+    background-color: #ffba8a;
+    color: white;
+    padding: 15px 20px;
     border: none;
-    padding: 10px 20px;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.license-btn:hover {
-    background-color: #ff8700;
-}
-
-.fine-history {
-    background-color: #fff;
-    padding: 20px;
     border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+}
+
+/* Fine History Section */
+.fine-history {
+    grid-column: span 2;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .fine-history h2 {
-    margin-bottom: 20px;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
 }
 
 .history-item {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-}
-
-.history-item:last-child {
-    border-bottom: none;
+    background-color: #f9fafb;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .history-item h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.history-item p {
-    font-size: 14px;
-    color: #888;
-}
-
-.history-item .amount {
+    margin: 0;
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #333;
 }
 
+.history-item span.amount {
+    font-weight: bold;
+    color: #4a7d8a;
+    justify-self: end;
+}
+
+/* Traffic Alerts Section */
 .traffic-alerts {
-    background-color: #fff;
+    background-color: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .traffic-alerts h2 {
-    margin-bottom: 10px;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
 }
 
 .traffic-alerts ul {
-    list-style: none;
+    list-style-type: none;
+    padding: 0;
 }
 
 .traffic-alerts li {
-    margin-bottom: 5px;
-    color: #888;
-}
-.history-item {
-    display: block;
-    padding: 15px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s;
-}
-
-.history-item:hover {
-    background-color: #f1f1f1;
-}
-
-.history-item h3,
-.history-item p,
-.history-item span {
-    margin: 5px 0;
 }
 
