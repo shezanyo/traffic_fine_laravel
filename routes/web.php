@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/fine-payment/{fine_id}', [FineController::class, 'finePayment'])->name('fine.Payment');
     Route::post('/pay-fine/{fine_id}', [FineController::class, 'payFine'])->name('pay.Fine');
 
-    Route::get('/fine', [FineController::class, 'currentfine'])->name('fine.Current');
+    Route::get('/fine', [FineController::class, 'currentFine'])->name('fine.Current');
 
     Route::get('/fineHistory', [FineController::class, 'fineHistory'])->name('fine.History');
 

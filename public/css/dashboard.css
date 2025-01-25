@@ -26,7 +26,6 @@
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex: 1;
-    margin-right: 5px;
 }
 
 .fine-counter p {
@@ -64,9 +63,8 @@
 
 /* Fine History Section */
 .fine-history {
-    grid-column: span 2;
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -77,16 +75,13 @@
 }
 
 .history-item {
-    display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     align-items: center;
-    background-color: #f9fafb;
     padding: 15px 20px;
     margin-bottom: 10px;
     border-radius: 10px;
     text-decoration: none;
     color: black;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .history-item h3 {

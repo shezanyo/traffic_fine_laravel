@@ -69,7 +69,7 @@ class FineController extends Controller
         }
     }
 
-    public function currentfine()
+    public function currentFine()
     {
         return view('dashboard.fine');
     }
