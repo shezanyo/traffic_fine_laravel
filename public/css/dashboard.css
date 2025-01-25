@@ -4,7 +4,6 @@
     grid-template-columns: 3fr 1fr;
     gap: 20px;
     padding: 20px;
-    background-color: #eef2f3;
     max-width: 1200px;
     margin: auto;
 }
@@ -63,7 +62,6 @@
 
 /* Fine History Section */
 .fine-history {
-    background-color: white;
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

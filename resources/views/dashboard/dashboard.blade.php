@@ -24,8 +24,8 @@
         <section class="fine-history">
             <h2>Fine History</h2>
             @forelse ($fines as $fine)
-                <div>
-                    <a href="{{ route('fine.Payment',['fine_id' => $fine->fineid]) }}" class="history-item">
+                <div style="background: white; margin-bottom: 10px; padding: 10px; border-radius: 15px;">
+                    <a href="{{ route('fine.Payment', ['fine_id' => $fine->fineid]) }}" class="history-item" style="text-decoration: none; color: inherit;">
                         <div class="row">
                             <div class="col-5">
                                 <div>
@@ -33,20 +33,22 @@
                                     <p>{{ $fine->location }}</p>
                                 </div>
                             </div>
-                            <div class="col-3"><p>{{ $fine->description }}</p></div>
-                            <div class="col-2"><span>{{ \Carbon\Carbon::parse($fine->date)->format('d/m/y') }}</span></div>
-                            <div class="col-2"><span class="amount">TK {{ $fine->amount }}</span></div>
+                            <div class="col-3">
+                                <p>{{ $fine->description }}</p>
+                            </div>
+                            <div class="col-2">
+                                <span>{{ \Carbon\Carbon::parse($fine->date)->format('d/m/y') }}</span>
+                            </div>
+                            <div class="col-2">
+                                <span class="amount">TK {{ $fine->amount }}</span>
+                            </div>
                         </div>
-
-
-
-
                     </a>
-                    @empty
-                        <p>No fines available.</p>
                 </div>
-
+            @empty
+                <p>No fines available.</p>
             @endforelse
+
         </section>
 
         <!-- Traffic Alerts Section -->
@@ -58,5 +60,4 @@
                 <li>Abul Hotel road 2km traffic</li>
             </ul>
         </aside>
-    </div>
 @endsection
