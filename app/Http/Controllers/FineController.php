@@ -6,6 +6,7 @@ use App\Models\Driver;
 use App\Models\Fine;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FineController extends Controller
 {
@@ -71,10 +72,43 @@ class FineController extends Controller
 
     public function currentFine()
     {
-        return view('dashboard.fine');
+        $userId = Auth::id();
+
+        // Fetch the car IDs (vehicle IDs) for the authenticated user
+        $carIds = Vehicle::where('user_id', $userId)->pluck('id');
+
+        // Fetch fines with status = 0 associated with the retrieved car IDs
+        $fines = Fine::whereIn('vehicle_id', $carIds)
+            ->where('status', 0)
+            ->get();
+
+        // If no fines are found, redirect back to the same page with a message
+        if ($fines->isEmpty()) {
+            return redirect()->back()->with('info', 'No fines available.');
+        }
+
+        // Pass the fines to the view
+        return view('dashboard.fine', compact('fines'));
     }
 
+
     public function finehistory(){
-        return view('dashboard.fineHistory');
+        $userId = Auth::id();
+
+        // Fetch the car IDs (vehicle IDs) for the authenticated user
+        $carIds = Vehicle::where('user_id', $userId)->pluck('id');
+
+        // Fetch fines with status = 0 associated with the retrieved car IDs
+        $fines = Fine::whereIn('vehicle_id', $carIds)
+            ->where('status', 1)
+            ->get();
+
+        // If no fines are found, redirect back to the same page with a message
+        if ($fines->isEmpty()) {
+            return redirect()->back()->with('info', 'No fines available.');
+        }
+
+        // Pass the fines to the view
+        return view('dashboard.fineHistory', compact('fines'));
     }
 }

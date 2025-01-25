@@ -16,15 +16,18 @@ class DashController extends Controller
             // Fetch the car IDs (vehicle IDs) for the authenticated user
             $carIds = Vehicle::where('user_id', $userId)->pluck('id');
 
-            // Fetch all fines associated with the retrieved car IDs
-            $fines = Fine::whereIn('vehicle_id', $carIds)->get();
+            // Fetch fines with status = 0 associated with the retrieved car IDs
+            $fines = Fine::whereIn('vehicle_id', $carIds)
+                ->where('status', 0)
+                ->get();
 
-            // Calculate the total amount of fines
+            // Calculate the total amount of fines with status = 0
             $totalAmount = $fines->sum('amount');
 
             return view('dashboard.dashboard', compact('fines', 'totalAmount'));
         } else {
-            return view('home.home',['showNavbarInHeader' => false]);
+            return view('home.home', ['showNavbarInHeader' => false]);
         }
     }
+
 }
