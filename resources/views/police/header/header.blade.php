@@ -1,0 +1,56 @@
+<section class="header">
+    <div class="container mx-auto">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <!-- Logo -->
+                    <div>
+                        <img src="{{ asset('images/logo.png') }}" style="width: 120px;" alt="Logo">
+                    </div>
+                    <!-- Collapse responsive button -->
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- Menus -->
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <!-- Centered menu items -->
+                        <div class="navbar-nav mx-auto">
+                            <a class="nav-link active nav-link-ltr" href="{{ Route('dashboard') }}">Home</a>
+                            <a class="nav-link active nav-link-ltr" href="{{ Route('fine.Current') }}">Fine</a>
+                            <a class="nav-link active nav-link-ltr" href="{{ Route('fine.History') }}">History</a>
+                            <a class="nav-link active nav-link-ltr" href="">Feat</a>
+                        </div>
+                        <!-- User Profile -->
+                        <div class="dropdown">
+                            <a
+                                href="#"
+                                class="d-flex align-items-center text-decoration-none dropdown-toggle"
+                                id="dropdownUserMenu"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <!-- User image -->
+                                <img
+                                    src="{{ asset('images/user.png') }}"
+                                    alt="User"
+                                    class="rounded-circle"
+                                    style="width: 40px; height: 40px; object-fit: cover;">
+                            </a>
+                            <!-- Dropdown menu -->
+                            <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUserMenu">
+                                <li><a class="dropdown-item" href="{{ Route('profile') }}">View Profile</a></li>
+                                <li><a class="dropdown-item" href="{{Route('vehicle.Get')}}">Vehicles</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ Route('logout') }}">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+    </div>
+</section>
