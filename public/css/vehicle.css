@@ -1,102 +1,65 @@
-.floating-button {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.left-button {
-    background-color: #007BFF; /* Blue */
-}
-.right-button {
-    background-color: #28A745; /* Green */
-}
-.floating-button:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2);
-}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+    background-color: #e8f2f1;
+    font-family: 'Arial', sans-serif;
 }
 
 header {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+h1 {
+    font-size: 2em;
 }
 
-main {
-    padding: 20px;
+nav a {
+    font-size: 1.1em;
+    color: #000;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+.floating-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.floating-buttons .btn {
+    margin: 10px;
 }
 
 .form-container {
-    max-width: 600px;
-    margin: 50px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: #333;
+.vehicle-list {
+    margin-top: 30px;
 }
 
-.form-group {
+.vehicle-card {
+    background-color: #f8f9fa;
+    padding: 15px;
     margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+.vehicle-info {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.vehicle-color {
+    color: #28a745;
     font-weight: bold;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
 
-.submit-button {
-    display: inline-block;
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
-}
-
-.error-messages {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
