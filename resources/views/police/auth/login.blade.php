@@ -13,7 +13,7 @@
            <form action="{{ route('police.login.submit') }}" method="POST">
                @csrf
                <div class="form-floating mb-3">
-                   <input class="form-control border-2" type="email" id="batchnumber" name="batchnumber" aria-label="Batch Number" required>
+                   <input class="form-control border-2" type="text" id="batchnumber" name="batchnumber" aria-label="Batch Number" required>
                    <label for="emailInput">Batch Number*</label>
                </div>
                <div class="form-floating mb-3">
