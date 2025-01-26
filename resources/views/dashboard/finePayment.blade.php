@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <section>
+    <section class="fine-item-body">
         <div class="fine-item">
             <h3>{{ $fine->name }}</h3>
             <p>Amount: TK {{ $fine->amount }}</p>

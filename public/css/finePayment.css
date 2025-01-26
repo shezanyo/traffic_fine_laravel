@@ -1,3 +1,16 @@
-.fine-item{
-    padding: 10px;
+.fine-item-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.fine-item {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    text-align: center; /* Center align text inside the fine-item */
+    max-width: 400px; /* Optional: Limit the width */
+    width: 90%; /* Make it responsive */
 }
