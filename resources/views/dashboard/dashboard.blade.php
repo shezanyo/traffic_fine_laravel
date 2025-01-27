@@ -22,7 +22,7 @@
 
         <!-- Fine History Section -->
         <section class="fine-history">
-            <h2>Fine History</h2>
+            <h2>Fine List</h2>
             @forelse ($fines as $fine)
                 <div style="background: white; margin-bottom: 10px; padding: 10px; border-radius: 15px;">
                     <a href="{{ route('fine.Payment', ['fine_id' => $fine->fineid]) }}" class="history-item" style="text-decoration: none; color: inherit;">

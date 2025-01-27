@@ -7,7 +7,7 @@
 @section('content')
 <div class="dashboard-container">
     <section class="fine-history">
-    <h2>Fine History</h2>
+    <h2>Fine </h2>
     @forelse ($fines as $fine)
         <div style="background: white; margin-bottom: 10px; padding: 10px; border-radius: 15px;">
             <div  class="history-item" style="text-decoration: none; color: inherit;">

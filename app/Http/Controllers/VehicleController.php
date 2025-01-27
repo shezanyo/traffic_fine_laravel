@@ -33,10 +33,7 @@ class VehicleController extends Controller
         $vehicle = Vehicle::create($validatedData);
 
         // Return success response
-        return response()->json([
-            'message' => 'Vehicle added successfully!',
-            'vehicle' => $vehicle,
-        ], 201);
+        return redirect()->route("vehicleAdd.Get");
     }
 
 }
